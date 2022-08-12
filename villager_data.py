@@ -159,4 +159,25 @@ def find_likeminded_villagers(filename, villager_name):
         {'Bella', ..., 'Carmen'}
     """
 
-    # TODO: replace this with your code
+    villager_data = open(filename)
+    same_personality = set()
+    for line in villager_data:
+        new_line = line.split("|")
+        name = new_line[0]
+        if name == villager_name:
+            personality = new_line[2]
+    villager_data.close()
+
+    villager_data = open(filename)
+    for other_line in villager_data:    
+        other_new_line = other_line.split("|")
+        name = other_new_line[0]
+        if personality == other_new_line[2]:
+            same_personality.add(name)
+    return same_personality
+    
+#print(find_likeminded_villagers("villagers.csv", "Cyrano"))
+
+#go through each line to find the name
+#find the personality connected to the name
+#
